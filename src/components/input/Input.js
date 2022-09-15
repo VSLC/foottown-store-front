@@ -1,11 +1,10 @@
 import styled from "styled-components"
 import { useState } from "react"
 
-const InputForm = ({ placeholderName }) => {
-    const [change, setChange] = useState("");
+const InputForm = ({ placeholderName, setValue, type }) => {
     return (
         <>
-            <Input placeholder={placeholderName} onChange={e => setChange(e.target.value)} />
+            <Input type={type} placeholder={placeholderName} onChange={e => setValue(e.target.value)} />
         </>
     );
 }
