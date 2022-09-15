@@ -2,7 +2,7 @@ import styled from "styled-components";
 import FootTownLogo from "../components/logo/Logo"
 import axios from "axios"
 import ButtonSign from "../components/buttons/ButtonSign"
-
+import Input from "../components/input/Input"
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom";
 
@@ -16,6 +16,8 @@ const LoginPage = () => {
         email,
         password
     }
+
+    console.log(userLoginObject)
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -31,8 +33,8 @@ const LoginPage = () => {
         <Container>
             <FootTownLogo />
             <Form onSubmit={handleLogin}>
-                <Input placeholder='email' onChange={e => setEmail(e.target.value)} />
-                <Input placeholder='password' onChange={e => setPassword(e.target.value)} />
+                <Input placeholderName='email' setValue={setEmail} />
+                <Input placeholderName='password' setValue={setPassword} />
                 <ButtonSign buttonName="Login" />
             </Form>
             <SignUp> <Link to='/sign-up'>Faça cadastro</Link></SignUp>
@@ -64,19 +66,6 @@ const Form = styled.form`
     }
 `;
 
-const Input = styled.input`
-    width: 250px;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    background-color: #D9D9D9;
-    ::placeholder{
-        color: #000;
-        padding: 0 20px;
-    }
-    
-`;
-
 const SignUp = styled.p`
   a{
     color: #fff;
@@ -84,5 +73,6 @@ const SignUp = styled.p`
     font-weight: bold;
     text-decoration: none;
   }
+  margin-top: 20px;
   
 `;
