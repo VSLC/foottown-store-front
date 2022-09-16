@@ -32,7 +32,9 @@ const ProductContainer = styled.div`
 const Name = styled.div`
     padding: 0 20px;
 `
-const Price = styled.div``
+const Price = styled.div`
+    margin-top: 2px;
+`
 const ProductImage = styled.div`
     display: flex;
     justify-content: center;
@@ -44,11 +46,14 @@ const ProductImage = styled.div`
     }
 `
 const ProductPrice = styled.div`
-    display: flex;
+    position: relative;
     justify-content: space-between;
     padding: 0 20px;
     ion-icon {
-        font-size: 20px;
+        position: absolute;
+        bottom:0;
+        right: 15px;
+        font-size: 30px;
     }
 
 `
