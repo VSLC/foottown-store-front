@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import FootTownLogo from "../components/logo/Logo"
-import ButtonLoginSignUp from "../components/button/Button";
+import ButtonSign from "../components/buttons/ButtonSign";
 import { useState } from "react"
 
 const RegistrationPage = () => {
@@ -20,7 +20,7 @@ const RegistrationPage = () => {
                 <Input type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} />
                 <Input type='password' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
             </Form>
-            <ButtonLoginSignUp buttonName="Sign Up" />
+            <ButtonSign buttonName="Sign Up" />
         </Container >
     );
 }
@@ -56,16 +56,4 @@ const Input = styled.input`
         padding: 0 20px;
     }
     
-`;
-
-
-const Button = styled.button`
-    margin-top: 20px;
-    width: 200px;
-    height: 40px;
-    border-radius: 31px;
-    border:none;
-    background-color: #58A4B0;
-    color: #fff;
-    font-weight: bold;
 `;
