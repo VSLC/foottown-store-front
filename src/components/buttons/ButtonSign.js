@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonLoginSignUp = ({ buttonName }) => {
+const ButtonSign = ({ buttonName }) => {
     return (
         <>
             <Button>
@@ -10,7 +10,7 @@ const ButtonLoginSignUp = ({ buttonName }) => {
     );
 }
 
-export default ButtonLoginSignUp;
+export default ButtonSign;
 
 
 const Button = styled.button`
