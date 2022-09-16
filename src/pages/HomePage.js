@@ -20,18 +20,28 @@ const HomePage = () => {
     }, [])
 
     const productsSport = productsList.filter((e) => e.type === "sport")
+    const productsFancy = productsList.filter((e) => e.type === "fancy")
+    console.log(productsSport)
 
     return (
         <Container>
             <Header>
                 <img src={Logo} alt="logo" />
             </Header>
-            <Products>
-                <Title>Sport </Title>
-                <ProductsSportList>
-                    {productsSport.map((element) => <Product name={element.name} price={element.price} image={element.image} />)}
-                </ProductsSportList>
-            </Products>
+            <AllProducts>
+                <Title>Sport</Title>
+                <Products>
+                    <ProductsSportList>
+                        {productsSport.map((element) => <Product name={element.name} price={element.price} image={element.image} />)}
+                    </ProductsSportList>
+                </Products>
+                <Title>Fancy</Title>
+                <Products>
+                    <ProductsSportList>
+                        {productsFancy.map((element) => <Product name={element.name} price={element.price} image={element.image} />)}
+                    </ProductsSportList>
+                </Products>
+            </AllProducts>
         </Container>
     );
 }
@@ -42,8 +52,6 @@ const Container = styled.div`
     @media (max-width:600px){
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         height: 100vh;
         background-color: #373f51;
         overflow-y: scroll ;
@@ -66,24 +74,29 @@ const Header = styled.div`
         width: 100px;
     }
 `;
-
+const AllProducts = styled.div`
+    margin: 100px 0;
+`;
 const Products = styled.div`
-    display: flex;
-    background-color: red;
-    width: 400px;
-    height: 100vh;
-    margin: 200px ;
+    @media (max-width:600px){  
+        margin: 10px 30px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: scroll;
+        width: 320px;
+        
+    }
 `;
 
 const Title = styled.h1`
+    margin-left: 30px;
     color: #58a4ba;
     font-size: 40px;
-    margin: 20px 0;
-    z-index: 2;
 `;
 
 const ProductsSportList = styled.div`
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
+
 `
