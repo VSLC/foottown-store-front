@@ -21,7 +21,6 @@ const HomePage = () => {
 
     const productsSport = productsList.filter((e) => e.type === "sport")
     const productsFancy = productsList.filter((e) => e.type === "fancy")
-    console.log(productsSport)
 
     return (
         <Container>
@@ -42,6 +41,15 @@ const HomePage = () => {
                     </ProductsSportList>
                 </Products>
             </AllProducts>
+            <Footer>
+                <Cart>
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <p className="cart-name">Carrinho</p>
+                </Cart>
+                <Items>
+                    <p>4</p>
+                </Items>
+            </Footer>
         </Container>
     );
 }
@@ -99,4 +107,38 @@ const ProductsSportList = styled.div`
     display: flex;
     gap: 20px;
 
+`
+
+const Footer = styled.div`
+    position: fixed;
+    bottom: 0%;
+    left: 0;
+    background-color:#A9BCD0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+
+`;
+
+const Cart = styled.div`
+    display: flex;
+    align-items: center;    
+    gap: 20px;
+    ion-icon{
+        font-size: 30px;
+    }
+    .cart-name{
+        font-size: 30px;
+        color: #373F51;
+    }
+`
+
+const Items = styled.div`
+    background-color: #D9D9D9;
+    padding: 10px;
+    border-radius: 50%;
+    color:#58A4B0;
 `
