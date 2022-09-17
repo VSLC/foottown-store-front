@@ -5,7 +5,7 @@ const Content = styled.div`
     border-bottom: #A9BCD0 1px;
     margin-top: 55px;
     height: 100vh;
-    
+
     h2{
         width: 165px;
         margin: auto;
@@ -44,6 +44,7 @@ const Items = styled.div`
     height: calc(100vw- 200px );
     justify-content: center;
     margin: auto;
+    scroll-behavior: auto;
 `;
 const Total = styled.div`
     background-color: #D9D9D9;
