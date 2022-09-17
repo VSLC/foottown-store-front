@@ -1,14 +1,18 @@
 import RegistrationPage from "./pages/RegistrationPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import CartPage from './pages/CartPage.js';
+import CartPage from './pages/CartPage';
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
+import UserContext from "./contexts/UserContexts";
 
 const App = () => {
+    const [config, setConfig] = useState({});
     return (
         <>
             <BrowserRouter>
+            <UserContext.Provider value={{config,setConfig}}>
                 <GlobalStyle />
                 <Routes>
                     <Route path="/sign-up" element={<RegistrationPage />} />
@@ -16,6 +20,7 @@ const App = () => {
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/" element={<HomePage />} />
                 </Routes>
+            </UserContext.Provider>
             </BrowserRouter>
         </>
     );
