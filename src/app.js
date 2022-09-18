@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import UserContext from "./contexts/UserContexts";
 import CheckOutPage from "./pages/CheckOutPage";
+import InfoPage from './pages/InfoPage';
 
 const App = () => {
     const [config, setConfig] = useState({});
@@ -20,6 +21,7 @@ const App = () => {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/check-out" element={<CheckOutPage />} />
+                    <Route path="/product/:idProduct" element={<InfoPage />} />
                     <Route path="/" element={<HomePage />} />
                 </Routes>
             </UserContext.Provider>

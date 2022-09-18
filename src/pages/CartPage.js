@@ -64,7 +64,7 @@ export default function CartPages(){
                             <h3> {i.name} </h3>
                             <h3> {i.value} </h3>
                         </ProdInfo>
-                        <ion-icon name="trash-bin-outline"></ion-icon>
+                        <ion-icon name="trash-bin-outline" onClick={()=>{RemoveItem(i._id)}}></ion-icon>
                     </Product>
                 })}
             </Items>

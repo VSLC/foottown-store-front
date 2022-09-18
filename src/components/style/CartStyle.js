@@ -65,6 +65,7 @@ const Final = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
+    
 
 `;
 const Footer = styled.div`

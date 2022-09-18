@@ -19,7 +19,7 @@ export default function CheckOut(){
         Valid:'', 
         cardName:'', 
         CVV: ''
-    })
+    });
 
     function handleForm(e) {
         setForm({
@@ -32,7 +32,7 @@ export default function CheckOut(){
 
         e.preventDefault();
 
-        const request = axios.post('/check-out',form, config);
+        const request = axios.post('http://localhost:5001/check-out',form, config);
         request.then(()=>{
             navigate('/');
         });
