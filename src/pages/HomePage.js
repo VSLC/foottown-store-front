@@ -5,16 +5,22 @@ import Logo from "../Assets/logo.png"
 
 import Product from "../components/product/Products"
 import UserContext from "../contexts/UserContexts.js";
+import { useNavigate } from "react-router-dom";
 
 
 
 const HomePage = () => {
     const [productsList, setProductsList] = useState([]);
     const { config, setConfig } = useContext(UserContext);
+    const navigate = useNavigate()
     console.log(productsList);
-    console.log(config)
 
     const token = localStorage.getItem("token")
+    if (!token) {
+        alert("Você precisa estar logado");
+        navigate("/login");
+    }
+
     const tokenAuth = {
         headers: {
             "Authorization": `Bearer ${token}`
@@ -35,10 +41,16 @@ const HomePage = () => {
     const productsSport = productsList.filter((e) => e.type === "sport")
     const productsFancy = productsList.filter((e) => e.type === "fancy")
 
+    const logOut = () => {
+        localStorage.clear()
+        navigate("/login")
+    }
+
     return (
         <Container>
             <Header>
                 <img src={Logo} alt="logo" />
+                <ion-icon name="log-out-outline" onClick={logOut}></ion-icon>
             </Header>
             <AllProducts>
                 <Title>Sport</Title>
@@ -93,6 +105,9 @@ const Header = styled.div`
     padding: 0 20px;
     img {
         width: 100px;
+    }
+    ion-icon {
+        font-size: 30px;
     }
 `;
 const AllProducts = styled.div`
