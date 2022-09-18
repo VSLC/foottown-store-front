@@ -6,7 +6,7 @@ import Input from "../components/input/Input";
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import UserContext from "../contexts/UserContexts.js";
-import { response } from "express";
+
 
 
 const LoginPage = () => {
@@ -25,7 +25,7 @@ const LoginPage = () => {
         e.preventDefault();
         const response = axios.post("http://localhost:5001/login", userLoginObject)
         response.then((res) => {
-            setConfig({headers:{ Authorization: `Bearer ${res.data}`}});
+            setConfig({ headers: { Authorization: `Bearer ${res.data}` } });
             localStorage.setItem("token", `${res.data}`);
             navigate("/");
         });

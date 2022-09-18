@@ -1,9 +1,25 @@
 import styled from "styled-components"
+import UserContext from "../../contexts/UserContexts";
+import { useContext } from "react"
+import axios from "axios"
 
-const Product = ({ name, price, image }) => {
-    const handleClick = (event) => {
-        console.log("clicou")
-    }
+const Product = ({ name, price, image, _id }) => {
+    const { config, setConfig } = useContext(UserContext);
+    function AddItem() {
+        console.log(config)
+        const body = { itemId: _id };
+        console.log(body)
+        console.log(body)
+        const request = axios.put('http://localhost:5001/addCart', body, config);
+        request.then(() => {
+            alert('Adicionado com sucesso!')
+        });
+        request.catch((err) => {
+            console.log(err);
+        });
+
+    };
+
     return (
         <>
             <ProductContainer>
@@ -11,7 +27,7 @@ const Product = ({ name, price, image }) => {
                 <Name>{name}</Name>
                 <ProductPrice>
                     <Price>R${price}</Price>
-                    <ion-icon name="cart-outline" onClick={handleClick}></ion-icon>
+                    <ion-icon name="cart-outline" onClick={AddItem}></ion-icon>
                 </ProductPrice>
             </ProductContainer>
         </>

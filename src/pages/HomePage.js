@@ -17,12 +17,12 @@ const HomePage = () => {
 
     const token = localStorage.getItem("token");
 
-    if (Object.keys(config).length===0){
+    if (Object.keys(config).length === 0) {
         if (!token) {
             alert("Você precisa estar logado");
             navigate("/login");
-        } else{
-            setConfig({headers:{ Authorization: `Bearer ${token}`}});
+        } else {
+            setConfig({ headers: { Authorization: `Bearer ${token}` } });
         };
     };
 
@@ -39,11 +39,16 @@ const HomePage = () => {
 
     const productsSport = productsList.filter((e) => e.type === "sport");
     const productsFancy = productsList.filter((e) => e.type === "fancy");
+    console.log(productsFancy)
 
     const logOut = () => {
         localStorage.clear();
         navigate("/login");
     };
+
+    const goCart = () => {
+        navigate("/cart")
+    }
 
     return (
         <Container>
@@ -55,19 +60,19 @@ const HomePage = () => {
                 <Title>Sport</Title>
                 <Products>
                     <ProductsSportList>
-                        {productsSport.map((element) => <Product name={element.name} price={element.price} image={element.image} />)}
+                        {productsSport.map((element) => <Product name={element.name} price={element.price} image={element.image} _id={element._id} />)}
                     </ProductsSportList>
                 </Products>
                 <Title>Fancy</Title>
                 <Products>
                     <ProductsSportList>
-                        {productsFancy.map((element) => <Product name={element.name} price={element.price} image={element.image} />)}
+                        {productsFancy.map((element) => <Product name={element.name} price={element.price} image={element.image} _id={element._id} />)}
                     </ProductsSportList>
                 </Products>
             </AllProducts>
             <Footer>
                 <Cart>
-                    <ion-icon name="cart-outline"></ion-icon>
+                    <ion-icon name="cart-outline" onClick={goCart}></ion-icon>
                     <p className="cart-name">Carrinho</p>
                 </Cart>
                 <Items>

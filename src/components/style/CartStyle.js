@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const Content = styled.div`
-    background-color: #373F51;
-    border-bottom: #A9BCD0 1px;
+    background-color: #A9BCD0;
     margin-top: 55px;
     height: 100vh;
 
@@ -14,6 +13,7 @@ const Content = styled.div`
 
 const Top = styled.div`
     background-color:  #373F51;
+    border-bottom: #D9D9D9 1px;
     height: 55px;
     width: 100vw;
     display: flex;
@@ -23,14 +23,16 @@ const Top = styled.div`
     top:0;
 `;
 const Product = styled.div`
-    display: flex;
-    width: 165px;
+   display: flex;
+    width: 185px;
     height: 45px;
     background-color:#373F51;
     padding: 5px;
     justify-content: space-between;
-
+    margin: 10px auto 0 auto;
+    border-radius: 7px;
     img{
+        border-radius: 5px;
         height: 35px;
         margin: auto;
     }
@@ -39,6 +41,7 @@ const ProdInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: auto;
 `
 const Items = styled.div`
     height: calc(100vw- 200px );
@@ -76,4 +79,4 @@ const Footer = styled.div`
 `
 
 
-export { Top, Content, Final, Total, Footer,Product, Items, ProdInfo };
+export { Top, Content, Final, Total, Footer, Product, Items, ProdInfo };
