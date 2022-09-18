@@ -2,8 +2,8 @@ import styled from "styled-components";
 import FootTownLogo from "../components/logo/Logo"
 import ButtonSign from "../components/buttons/ButtonSign";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"
-import { useState, useContext } from "react"
+import { useNavigate, Link } from "react-router-dom"
+import { useState, useContext, } from "react"
 import UserContext from "../contexts/UserContexts.js";
 
 
@@ -44,6 +44,7 @@ const RegistrationPage = () => {
                 <Input type='password' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
                 <ButtonSign buttonName="Sign Up" />
             </Form>
+            <SignIn> <Link to='/login'>Faça login</Link></SignIn>
         </Container >
     );
 }
@@ -65,6 +66,7 @@ const Container = styled.div`
 const Form = styled.form`
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
 `;
 
@@ -79,4 +81,16 @@ const Input = styled.input`
         padding: 0 20px;
     }
     
+`;
+
+
+const SignIn = styled.p`
+  a{
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  margin-top: 20px;
+  
 `;
