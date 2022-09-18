@@ -6,15 +6,25 @@ import { useNavigate } from "react-router-dom";
 
 import { Top, Content, Final, Total, Footer, Product, Items,ProdInfo } from '../components/style/CartStyle.js';
 
-import logo from '../components/logo/Logo.js'
+import logo from '../components/logo/Logo.js';
 
 export default function CartPages(){
     const navigate = useNavigate();
     const {config,setConfig} = useContext(UserContext);
 
+
     let items =[];
 
     useEffect(()=>{
+        const token = localStorage.getItem("token");
+        if (Object.keys(config).length===0){
+            if (!token) {
+                alert("Você precisa estar logado");
+                navigate("/login");
+            } else{
+                setConfig({headers:{ Authorization: `Bearer ${token}`}});
+            };
+        };
 
         const request = axios.get("http://localhost:5001/cart", config);
 
@@ -46,7 +56,7 @@ export default function CartPages(){
     let total =0;
     items.map((i)=>{
         total+=i.value;
-    })
+    });
 
     return(
         <>
@@ -82,5 +92,5 @@ export default function CartPages(){
 
     
         </>
-    )
+    );
 };

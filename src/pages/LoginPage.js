@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import FootTownLogo from "../components/logo/Logo"
-import axios from "axios"
-import ButtonSign from "../components/buttons/ButtonSign"
-import Input from "../components/input/Input"
-import { useState, useContext } from "react"
+import FootTownLogo from "../components/logo/Logo";
+import axios from "axios";
+import ButtonSign from "../components/buttons/ButtonSign";
+import Input from "../components/input/Input";
+import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import UserContext from "../contexts/UserContexts.js";
+import { response } from "express";
 
 
 const LoginPage = () => {
@@ -13,23 +14,23 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const { config, setConfig } = useContext(UserContext);
     const navigate = useNavigate();
-    console.log(config)
+    console.log(config);
 
     const userLoginObject = {
         email,
         password
-    }
+    };
 
     const handleLogin = (e) => {
         e.preventDefault();
         const response = axios.post("http://localhost:5001/login", userLoginObject)
         response.then((res) => {
-            setConfig(res.data)
-            localStorage.setItem("token", res.data)
+            setConfig({headers:{ Authorization: `Bearer ${res.data}`}});
+            localStorage.setItem("token", `${res.data}`);
             navigate("/");
-        }
-        ).catch((error) => { console.log(error) })
-    }
+        });
+        response.catch((error) => { console.log(error) });
+    };
 
     return (
         <Container>
@@ -42,7 +43,7 @@ const LoginPage = () => {
             <SignUp> <Link to='/sign-up'>Faça cadastro</Link></SignUp>
         </Container >
     );
-}
+};
 
 export default LoginPage;
 
