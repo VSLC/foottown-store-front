@@ -1,17 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import styled from "styled-components"
 import Logo from "../Assets/logo.png"
 
 import Product from "../components/product/Products"
+import UserContext from "../contexts/UserContexts.js";
+
 
 
 const HomePage = () => {
     const [productsList, setProductsList] = useState([]);
+    const { config, setConfig } = useContext(UserContext);
     console.log(productsList);
+    console.log(config)
+
+    const token = localStorage.getItem("token")
+    const tokenAuth = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+
 
     useEffect(() => {
-        const response = axios.get("http://localhost:5001/cart")
+        const response = axios.get("http://localhost:5001/products", tokenAuth)
         response.then((res) => {
             setProductsList(res.data);
         }).catch((error) => {

@@ -1,26 +1,49 @@
 import styled from "styled-components";
 import FootTownLogo from "../components/logo/Logo"
 import ButtonSign from "../components/buttons/ButtonSign";
-import { useState } from "react"
+import axios from "axios";
+import { useNavigate } from "react-router-dom"
+import { useState, useContext } from "react"
+import UserContext from "../contexts/UserContexts.js";
+
 
 const RegistrationPage = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const { config, setConfig } = useContext(UserContext);
+    console.log(config)
 
-    console.log(name, email, password, confirmPassword)
+    const navigate = useNavigate();
+
+    const userSignUpObject = {
+        name,
+        email,
+        password,
+        confirmPassword
+    }
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        const response = axios.post("http://localhost:5001/sign-up", userSignUpObject)
+        response.then((res) => {
+            console.log(res.data)
+            navigate("/login");
+        }
+        ).catch((error) => { console.log(error) })
+    }
 
     return (
         <Container>
             <FootTownLogo />
-            <Form>
+            <Form onSubmit={handleSignUp}>
                 <Input placeholder='Name' onChange={e => setName(e.target.value)} />
                 <Input placeholder='Email' onChange={e => setEmail(e.target.value)} />
                 <Input type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} />
                 <Input type='password' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
+                <ButtonSign buttonName="Sign Up" />
             </Form>
-            <ButtonSign buttonName="Sign Up" />
         </Container >
     );
 }

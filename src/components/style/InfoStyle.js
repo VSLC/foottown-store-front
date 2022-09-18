@@ -69,7 +69,7 @@ const Line = styled.div`
     height: 2px;
     border-radius: 5px;
 `;
-const Button = styled`
+const Button = styled.button`
         border: none;
         position: fixed;
         bottom: 20;
@@ -78,9 +78,9 @@ const Button = styled`
         width: 160px;
         background-color: #D9D9D9;
         border-radius: 30px;
-        color: ${params=> params.color? '#A9BCD0': '#58A4B0'};
+        color: ${params => params.color ? '#A9BCD0' : '#58A4B0'};
         font-family: 'Bungee';
         font-size: 32px;
 `
 
-export{ Content, Button, BackButton, InfoBox, ProdImg, Line };
+export { Content, Button, BackButton, InfoBox, ProdImg, Line };

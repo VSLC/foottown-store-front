@@ -3,27 +3,29 @@ import FootTownLogo from "../components/logo/Logo"
 import axios from "axios"
 import ButtonSign from "../components/buttons/ButtonSign"
 import Input from "../components/input/Input"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate, Link } from "react-router-dom";
+import UserContext from "../contexts/UserContexts.js";
 
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { config, setConfig } = useContext(UserContext);
     const navigate = useNavigate();
+    console.log(config)
 
     const userLoginObject = {
         email,
         password
     }
 
-    console.log(userLoginObject)
-
     const handleLogin = (e) => {
         e.preventDefault();
         const response = axios.post("http://localhost:5001/login", userLoginObject)
         response.then((res) => {
-            console.log(res.data)
+            setConfig(res.data)
+            localStorage.setItem("token", res.data)
             navigate("/");
         }
         ).catch((error) => { console.log(error) })
