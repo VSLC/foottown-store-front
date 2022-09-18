@@ -27,11 +27,10 @@ const BackButton = styled.div`
 `
 
 const Content = styled.div`
+padding-top: 55px;
     background-color: #58A4B0;
-    margin-top: 55px;
     height: 100vh;
     justify-content: center;
-
 `;
 const Form = styled.form`
     width: 250px;

@@ -44,7 +44,7 @@ export default function CheckOut(){
     return(
         <>
         <Top>
-            <BackButton>
+            <BackButton onClick={()=>{navigate('/cart')}}>
                 <ion-icon name="caret-back-outline"></ion-icon>
             </BackButton>
 
