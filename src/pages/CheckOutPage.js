@@ -4,13 +4,23 @@ import UserContext from "../contexts/UserContexts.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import logo from '../components/logo/Logo.js'
+import logo from '../components/logo/Logo.js';
 
-import {Top, BackButton, Form, Content} from '../components/style/CheckOutStyle.js'
+import {Top, BackButton, Form, Content} from '../components/style/CheckOutStyle.js';
 
 export default function CheckOut(){
     const navigate = useNavigate();
     const {config,setConfig} = useContext(UserContext);
+    const token = localStorage.getItem("token");
+    
+    if (Object.keys(config).length===0){
+        if (!token) {
+            alert("Você precisa estar logado");
+            navigate("/login");
+        } else{
+            setConfig({headers:{ Authorization: `Bearer ${token}`}});
+        };
+    };
 
     const [form, setForm] = useState({
         paymentName:'', 
@@ -39,7 +49,7 @@ export default function CheckOut(){
         request.catch((err)=>{
             console.log(err)
         })
-    }
+    };
 
     return(
         <>
@@ -64,5 +74,5 @@ export default function CheckOut(){
             </Form>
         </Content>
         </>
-    )
+    );
 };

@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import styled from "styled-components"
-import Logo from "../Assets/logo.png"
+import styled from "styled-components";
+import Logo from "../Assets/logo.png";
 
-import Product from "../components/product/Products"
+import Product from "../components/product/Products";
 import UserContext from "../contexts/UserContexts.js";
 import { useNavigate } from "react-router-dom";
 
@@ -12,39 +12,38 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
     const [productsList, setProductsList] = useState([]);
     const { config, setConfig } = useContext(UserContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     console.log(productsList);
 
-    const token = localStorage.getItem("token")
-    if (!token) {
-        alert("Você precisa estar logado");
-        navigate("/login");
-    }
+    const token = localStorage.getItem("token");
 
-    const tokenAuth = {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }
+    if (Object.keys(config).length===0){
+        if (!token) {
+            alert("Você precisa estar logado");
+            navigate("/login");
+        } else{
+            setConfig({headers:{ Authorization: `Bearer ${token}`}});
+        };
+    };
 
 
 
     useEffect(() => {
-        const response = axios.get("http://localhost:5001/products", tokenAuth)
+        const response = axios.get("http://localhost:5001/products", config);
         response.then((res) => {
             setProductsList(res.data);
         }).catch((error) => {
             console.log(error);
-        })
-    }, [])
+        });
+    }, []);
 
-    const productsSport = productsList.filter((e) => e.type === "sport")
-    const productsFancy = productsList.filter((e) => e.type === "fancy")
+    const productsSport = productsList.filter((e) => e.type === "sport");
+    const productsFancy = productsList.filter((e) => e.type === "fancy");
 
     const logOut = () => {
-        localStorage.clear()
-        navigate("/login")
-    }
+        localStorage.clear();
+        navigate("/login");
+    };
 
     return (
         <Container>
@@ -122,7 +121,7 @@ const Products = styled.div`
         overflow-x: scroll;
         width: 320px;
         
-    }
+    };
 `;
 
 const Title = styled.h1`
@@ -134,8 +133,7 @@ const Title = styled.h1`
 const ProductsSportList = styled.div`
     display: flex;
     gap: 20px;
-
-`
+`;
 
 const Footer = styled.div`
     position: fixed;
@@ -162,11 +160,11 @@ const Cart = styled.div`
         font-size: 30px;
         color: #373F51;
     }
-`
+`;
 
 const Items = styled.div`
     background-color: #D9D9D9;
     padding: 10px;
     border-radius: 50%;
     color:#58A4B0;
-`
+`;

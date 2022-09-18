@@ -12,7 +12,7 @@ const Top = styled.div`
     top:0;
     left: 0;
     background-color: #58A4B0;
-`
+`;
 const BackButton = styled.div`
     width: 25px;
     height: 25px;
@@ -24,7 +24,7 @@ const BackButton = styled.div`
     display: flex;
     font-size: 18px;
 
-`
+`;
 
 const Content = styled.div`
 padding-top: 55px;
@@ -69,5 +69,5 @@ const Form = styled.form`
 
     }
 
-`
+`;
 export { Top, BackButton, Form, Content };

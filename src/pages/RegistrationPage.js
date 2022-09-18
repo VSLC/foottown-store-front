@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import FootTownLogo from "../components/logo/Logo"
+import FootTownLogo from "../components/logo/Logo";
 import ButtonSign from "../components/buttons/ButtonSign";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom"
-import { useState, useContext, } from "react"
+import { useNavigate, Link } from "react-router-dom";
+import { useState, useContext, } from "react";
 import UserContext from "../contexts/UserContexts.js";
 
 
@@ -13,7 +13,7 @@ const RegistrationPage = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const { config, setConfig } = useContext(UserContext);
-    console.log(config)
+    console.log(config);
 
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const RegistrationPage = () => {
         email,
         password,
         confirmPassword
-    }
+    };
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -31,8 +31,8 @@ const RegistrationPage = () => {
             console.log(res.data)
             navigate("/login");
         }
-        ).catch((error) => { console.log(error) })
-    }
+        ).catch((error) => { console.log(error) });
+    };
 
     return (
         <Container>
@@ -47,7 +47,7 @@ const RegistrationPage = () => {
             <SignIn> <Link to='/login'>Faça login</Link></SignIn>
         </Container >
     );
-}
+};
 
 export default RegistrationPage;
 

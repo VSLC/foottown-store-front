@@ -5,7 +5,7 @@ const Content = styled.div`
     height: 100vh;
     background-color:#373F51;
     justify-content: center;
-`
+`;
 const ProdImg = styled.div`
     position: relative;
     margin-top: 40px;
@@ -15,7 +15,7 @@ const ProdImg = styled.div`
         border-radius: 5px;
         width: 160px;
     }
-`
+`;
 const BackButton = styled.div`
     position: fixed;
     top: -15px;
@@ -30,7 +30,7 @@ const BackButton = styled.div`
     display: flex;
     font-size: 18px;
 
-`
+`;
 const InfoBox = styled.div`
     background-color: #D9D9D9;
     height: 60vh;
@@ -62,7 +62,7 @@ const InfoBox = styled.div`
         font-weight: 200;
         color: #373F51;
     }
-`
+`;
 const Line = styled.div`
     background-color:#373F51;
     width: 70px;
@@ -81,6 +81,6 @@ const Button = styled.button`
         color: ${params => params.color ? '#A9BCD0' : '#58A4B0'};
         font-family: 'Bungee';
         font-size: 32px;
-`
+`;
 
 export { Content, Button, BackButton, InfoBox, ProdImg, Line };
