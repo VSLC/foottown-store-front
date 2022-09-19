@@ -1,10 +1,13 @@
 import styled from "styled-components"
 import UserContext from "../../contexts/UserContexts";
 import { useContext } from "react"
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 
 const Product = ({ name, price, image, _id }) => {
     const { config, setConfig } = useContext(UserContext);
+    const navigate = useNavigate();
+
     function AddItem() {
         console.log(config)
         const body = { itemId: _id };
@@ -19,10 +22,13 @@ const Product = ({ name, price, image, _id }) => {
         });
 
     };
+    function goToItem(i){
+        navigate(`/product/${i}`);
+    }
 
     return (
         <>
-            <ProductContainer>
+            <ProductContainer onClick={()=>goToItem(_id)}>
                 <ProductImage><img src={image} /></ProductImage>
                 <Name>{name}</Name>
                 <ProductPrice>
