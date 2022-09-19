@@ -23,7 +23,7 @@ const Top = styled.div`
     top:0;
 `;
 const Product = styled.div`
-   display: flex;
+    display: flex;
     width: 185px;
     height: 45px;
     background-color:#373F51;
@@ -31,6 +31,7 @@ const Product = styled.div`
     justify-content: space-between;
     margin: 10px auto 0 auto;
     border-radius: 7px;
+
     img{
         border-radius: 5px;
         height: 35px;

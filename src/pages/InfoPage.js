@@ -26,7 +26,6 @@ export default function Info() {
             console.log(err);
         });
     };
-
     useEffect(() => {
 
         const requestProduct = axios.get(`http://localhost:5001/product/${params.idProduct}`, config);
@@ -49,15 +48,14 @@ export default function Info() {
         });
 
     }, []);
-
     return (
         <>
             <Content>
                 <ProdImg>
-                    <img src={product.img} />
                     <BackButton>
                         <ion-icon name="caret-back-outline"></ion-icon>
                     </BackButton>
+                    <img src={product.image} />
                 </ProdImg>
             </Content>
             <InfoBox>
@@ -67,11 +65,11 @@ export default function Info() {
                 <h3>Informações</h3>
                 <p>{product.description}</p>
                 {itemOnCart ? (
-                    <Button color={true}>
+                    <Button color={itemOnCart}>
                         Item no carrinho
                     </Button>
                 ) :
-                    <Button color={false} onClick={() => { AddItem() }}>
+                    <Button color={itemOnCart} onClick={AddItem}>
                         ADICIONAR AO CARRINHO
                     </Button>
                 }
