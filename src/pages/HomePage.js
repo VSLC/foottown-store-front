@@ -29,7 +29,7 @@ const HomePage = () => {
 
 
     useEffect(() => {
-        const response = axios.get("http://localhost:5001/products", config);
+        const response = axios.get("https://foottown-projeto14.herokuapp.com/products", config);
         response.then((res) => {
             setProductsList(res.data);
         }).catch((error) => {

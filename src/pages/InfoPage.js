@@ -28,7 +28,7 @@ export default function Info() {
     };
     useEffect(() => {
 
-        const requestProduct = axios.get(`http://localhost:5001/product/${params.idProduct}`, config);
+        const requestProduct = axios.get(`https://foottown-projeto14.herokuapp.com/product/${params.idProduct}`, config);
         requestProduct.then((response) => {
             setProduct(response.data);
         });
@@ -36,7 +36,7 @@ export default function Info() {
             console.log(err)
             navigate('/');
         });
-        const requestCart = axios.get("http://localhost:5001/cart", config);
+        const requestCart = axios.get("https://foottown-projeto14.herokuapp.com/cart", config);
         requestCart.then((response) => {
             let itemslist = response.data;
             itemOnCart = itemslist.some(element => {

@@ -26,7 +26,7 @@ export default function CartPages() {
             };
         };
 
-        const request = axios.get("http://localhost:5001/cart", config);
+        const request = axios.get("https://foottown-projeto14.herokuapp.com/cart", config);
 
         request.then((response) => {
             setItems(response.data);

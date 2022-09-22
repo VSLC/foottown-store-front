@@ -13,7 +13,7 @@ const Product = ({ name, price, image, _id }) => {
         const body = { itemId: _id };
         console.log(body)
         console.log(body)
-        const request = axios.put('http://localhost:5001/addCart', body, config);
+        const request = axios.put('https://foottown-projeto14.herokuapp.com/addCart', body, config);
         request.then(() => {
             alert('Adicionado com sucesso!')
         });

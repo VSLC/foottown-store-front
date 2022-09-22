@@ -23,7 +23,7 @@ const LoginPage = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const response = axios.post("http://localhost:5001/login", userLoginObject)
+        const response = axios.post("https://foottown-projeto14.herokuapp.com/login", userLoginObject)
         response.then((res) => {
             setConfig({ headers: { Authorization: `Bearer ${res.data}` } });
             localStorage.setItem("token", `${res.data}`);
